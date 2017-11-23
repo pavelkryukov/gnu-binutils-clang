@@ -1,0 +1,39 @@
+
+notifications:
+  email: false
+
+language: cpp
+sudo: required
+
+branches:
+  only:
+  - master
+
+compiler:
+  - gcc
+  - clang
+os:
+  - linux
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-trusty-5.0		
+    packages:
+    - gcc-6
+    - g++-6
+    - clang-5.0
+    - texinfo
+    - zlib1g-dev
+
+install: 
+  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 90
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
+
+script:
+  - if [ $CC == clang ] && [ "$TRAVIS_OS_NAME" == "linux" ]; then CXX=clang++-5.0; CC=clang-5.0; fi
+  - cd $TRAVIS_BUILD_DIR/binutils-gdb
+  - ./configure --target=mipsel-unknown-linux-gnu --prefix=$TRAVIS_BUILD_DIR/binutils-gdb/cross/mips --with-system-zlib
+  - make
+  - make install
