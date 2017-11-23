@@ -1,0 +1,33 @@
+
+notifications:
+  email: false
+
+language: c
+sudo: false
+
+branches:
+  only:
+  - master
+
+compiler:
+  - gcc
+  - clang
+os:
+  - linux
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-trusty-5.0
+    packages:
+    - clang-5.0
+    - texinfo
+    - zlib1g-dev
+
+script:
+  - if [ $CC == clang ] && [ "$TRAVIS_OS_NAME" == "linux" ]; then CXX=clang++-5.0; CC=clang-5.0; unset GCC; fi
+  - cd $TRAVIS_BUILD_DIR/binutils-gdb
+  - ./configure --target=mipsel-unknown-linux-gnu --prefix=$TRAVIS_BUILD_DIR/binutils-gdb/cross/mips --with-system-zlib > /dev/null
+  - make > /dev/null
+  - make install > /dev/null
