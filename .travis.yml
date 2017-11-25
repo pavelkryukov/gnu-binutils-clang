@@ -25,6 +25,6 @@ addons:
 
 script:
   - cd $TRAVIS_BUILD_DIR/binutils-gdb
-  - ./configure --target=mipsel-unknown-linux-gnu --prefix=$TRAVIS_BUILD_DIR/binutils-gdb/cross/mips --with-system-zlib > /dev/null
-  - make > /dev/null
-  - make install > /dev/null
+  - ./configure --target=mipsel-unknown-linux-gnu --prefix=$TRAVIS_BUILD_DIR/binutils-gdb/cross/mips --with-system-zlib
+  - make
+  - make install
