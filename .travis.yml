@@ -19,6 +19,8 @@ addons:
     - ubuntu-toolchain-r-test
     - llvm-toolchain-trusty-5.0		
     packages:
+    - gcc-6	
+    - g++-6
     - clang-5.0
     - clang-tidy-5.0
     - llvm-5.0-dev
@@ -36,6 +38,6 @@ script:
   - export CC=clang-5.0
   - cd $TRAVIS_BUILD_DIR/binutils-gdb
   - ./configure --target=mipsel-unknown-linux-gnu --prefix=$TRAVIS_BUILD_DIR/binutils-gdb/cross/mips --with-system-zlib
-  - bear make
+  - bear make > /dev/null
   - run-clang-tidy-5.0.py -clang-tidy-binary clang-tidy-5.0 -header-filter='.*' -checks='-*,modernize-use-auto'
-  - sudo make install
+  - sudo make install > /dev/null
