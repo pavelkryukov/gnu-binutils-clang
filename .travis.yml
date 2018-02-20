@@ -2,7 +2,7 @@ notifications:
   email: false
 
 language: cpp
-sudo: false
+sudo: required
 
 branches:
   only:
@@ -29,12 +29,13 @@ install:
   - cd $TRAVIS_BUILD_DIR/Bear
   - cmake .
   - make all
+  - sudo make install
 
 script:
   - export CXX=clang++-5.0
   - export CC=clang-5.0
   - cd $TRAVIS_BUILD_DIR/binutils-gdb
   - ./configure --target=mipsel-unknown-linux-gnu --prefix=$TRAVIS_BUILD_DIR/binutils-gdb/cross/mips --with-system-zlib
-  - $TRAVIS_BUILD_DIR/Bear/bear make
+  - bear make
   - run-clang-tidy-5.0.py -clang-tidy-binary clang-tidy-5.0 -header-filter='.*' -checks='-*,modernize-use-auto'
-  - make install
+  - sudo make install
