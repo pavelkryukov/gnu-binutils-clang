@@ -9,7 +9,6 @@ branches:
   - master
 
 compiler:
-  - gcc
   - clang
 os:
   - linux
@@ -20,8 +19,6 @@ addons:
     - ubuntu-toolchain-r-test
     - llvm-toolchain-trusty-5.0		
     packages:
-    - gcc-6
-    - g++-6
     - clang-5.0
     - clang-tidy-5.0
     - llvm-5.0-dev
@@ -37,7 +34,8 @@ install:
   - sudo make install
 
 script:
-  - if [ $CC == clang ] && [ "$TRAVIS_OS_NAME" == "linux" ]; then CXX=clang++-5.0; CC=clang-5.0; fi
+  - export CXX=clang++-5.0
+  - export CC=clang-5.0
   - cd $TRAVIS_BUILD_DIR/binutils-gdb
   - ./configure --target=mipsel-unknown-linux-gnu --prefix=$TRAVIS_BUILD_DIR/binutils-gdb/cross/mips --with-system-zlib
   - bear make
