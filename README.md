@@ -11,4 +11,4 @@ The methodology originates from [MIPT-MIPS](http://mipt-ilab.github.io/mipt-mips
  
 ## Compilation errors:
  * ~~**[PR22485](https://sourceware.org/bugzilla/show_bug.cgi?id=22485)**~~ — C89-imcompatible initialization of structure.
- * **[PR22495](https://sourceware.org/bugzilla/show_bug.cgi?id=22495)** — deep call of "printf" with non-literal format.
+ * ~~**[PR22495](https://sourceware.org/bugzilla/show_bug.cgi?id=22495)**~~ — deep call of "printf" with non-literal format.
