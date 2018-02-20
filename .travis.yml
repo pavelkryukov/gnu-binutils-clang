@@ -26,12 +26,7 @@ addons:
     - llvm-5.0-dev
     - texinfo
     - zlib1g-dev
-
-install: 
-  - cd $TRAVIS_BUILD_DIR/Bear
-  - cmake .
-  - make all
-  - sudo make install
+    - bear
 
 script:
   - export CXX=clang++-5.0
