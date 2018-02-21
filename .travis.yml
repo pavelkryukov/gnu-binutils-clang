@@ -37,6 +37,7 @@ script:
   - cd $TRAVIS_BUILD_DIR/binutils-gdb
   - ./configure --target=mipsel-unknown-linux-gnu --prefix=$TRAVIS_BUILD_DIR/binutils-gdb/cross/mips --with-system-zlib
   - bear make > /dev/null
+  - head compile_commands.json
   - $TRAVIS_BUILD_DIR/clean-commands.py
   - head compile_commands.json
   - run-clang-tidy-5.0.py -clang-tidy-binary clang-tidy-5.0 -header-filter='.*' -checks='*'
