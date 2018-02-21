@@ -28,13 +28,15 @@ addons:
     - zlib1g-dev
     - bear
 
-script:
+install:
   - export CXX=clang++-5.0
   - export CC=clang-5.0
+  - chmod +x $TRAVIS_BUILD_DIR/clean-commands.py
+
+script:
   - cd $TRAVIS_BUILD_DIR/binutils-gdb
   - ./configure --target=mipsel-unknown-linux-gnu --prefix=$TRAVIS_BUILD_DIR/binutils-gdb/cross/mips --with-system-zlib
   - bear make > /dev/null
-  - chmod +x $TRAVIS_BUILD_DIR/clean-commands.py
   - $TRAVIS_BUILD_DIR/clean-commands.py
-  - run-clang-tidy-5.0.py -clang-tidy-binary clang-tidy-5.0 -header-filter='.*' -checks='-*,modernize-use-auto'
+  - run-clang-tidy-5.0.py -clang-tidy-binary clang-tidy-5.0 -header-filter='.*' -checks='*'
   - make install > /dev/null
