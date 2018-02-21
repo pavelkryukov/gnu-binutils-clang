@@ -3,7 +3,7 @@
 
 import json
 
-with open("compile_commands.json") as f:
+with open("compile_commands.json", "r") as f:
     data = json.loads(f.read())
 
 data = [x for x in data if not 'conftest' in x['command']]
