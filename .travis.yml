@@ -29,8 +29,6 @@ addons:
     - bear
 
 install:
-  - export CXX=clang++-5.0
-  - export CC=clang-5.0
   - chmod +x $TRAVIS_BUILD_DIR/clean-commands.py
 
 script:
