@@ -38,5 +38,5 @@ script:
   - head compile_commands.json
   - $TRAVIS_BUILD_DIR/clean-commands.py
   - head compile_commands.json
-  - run-clang-tidy-5.0.py -clang-tidy-binary clang-tidy-5.0 -header-filter='.*' -checks='*'
+  - run-clang-tidy-5.0.py -clang-tidy-binary clang-tidy-5.0 -header-filter='.*' -checks='*,-llvm-header-guard,-readability-named-parameter,-google-readability-braces-around-statements,-llvm-include-order,-google-readability-braces-around-statements'
   - make install > /dev/null
