@@ -36,5 +36,5 @@ script:
   - ./configure --target=mipsel-unknown-linux-gnu --prefix=$TRAVIS_BUILD_DIR/binutils-gdb/cross/mips --with-system-zlib
   - bear make > /dev/null
   - $TRAVIS_BUILD_DIR/clean-commands.py
-  - run-clang-tidy-5.0.py -clang-tidy-binary clang-tidy-5.0 -header-filter='.*' -checks='*,-llvm-header-guard,-readability-named-parameter,-google-readability-braces-around-statements,-llvm-include-order,-google-readability-braces-around-statements,-readability-braces-around-statements'
+  - run-clang-tidy-5.0.py -clang-tidy-binary clang-tidy-5.0 -header-filter='.*' -checks='*,-llvm-header-guard,-readability-named-parameter,-google-readability-braces-around-statements,-llvm-include-order,-readability-braces-around-statements,-misc-macro-parentheses,=readability-inconsistent-declaration-parameter-name'
   - make install > /dev/null
