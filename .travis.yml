@@ -31,6 +31,5 @@ script:
   - cd $TRAVIS_BUILD_DIR/binutils-gdb
   - ./configure --target=mipsel-unknown-linux-gnu --prefix=$TRAVIS_BUILD_DIR/binutils-gdb/cross/mips --with-system-zlib
   - bear make MAKEINFO=true > /dev/null
-  - $TRAVIS_BUILD_DIR/clean-commands.py
-  - run-clang-tidy-5.0.py -clang-tidy-binary clang-tidy-5.0 -header-filter='.*' | grep -v "header-filter" --color=never
+  - run-clang-tidy-5.0.py -clang-tidy-binary clang-tidy-5.0 -header-filter='.*' ^.*simulator((?!conftest).)*$ | grep -v "header-filter" --color=never
   - make install > /dev/null
