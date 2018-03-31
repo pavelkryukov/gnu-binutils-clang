@@ -17,16 +17,19 @@ addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
-    - llvm-toolchain-trusty-5.0
+    - llvm-toolchain-trusty-6.0
     packages:
     - gcc-6
     - g++-6
-    - clang-tidy-5.0
+    - clang-6.0
+    - clang-tidy-6.0
     - bear
 
 script:
+  - export CC=clang-6.0
+  - export CXX=clang++-6.0
   - cd $TRAVIS_BUILD_DIR/binutils-gdb
   - ./configure --target=mipsel-unknown-linux-gnu --prefix=$TRAVIS_BUILD_DIR/binutils-gdb/cross/mips --with-system-zlib
   - bear make MAKEINFO=true > /dev/null
-  - run-clang-tidy-5.0.py -clang-tidy-binary clang-tidy-5.0 -header-filter='.*' '^((?!conftest).)*$' | grep -v "header-filter" --color=never
+  - run-clang-tidy-6.0.py -clang-tidy-binary clang-tidy-6.0 -header-filter='.*' '^((?!conftest).)*$' | grep -v "header-filter" --color=never
   - make MAKEINFO=true install > /dev/null
