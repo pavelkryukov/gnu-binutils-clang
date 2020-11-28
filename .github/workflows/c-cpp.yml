@@ -31,7 +31,7 @@ jobs:
     
     - name: Clang-Tidy
       working-directory: binutils-gdb
-      run: run-clang-tidy-10.py -header-filter='.*' '^((?!conftest).)*$' | grep -v "header-filter" --color=never
+      run: run-clang-tidy-10.py -clang-tidy-binary clang-tidy-10 -header-filter='.*' '^((?!conftest).)*$' | grep -v "header-filter" --color=never
     
     - name: Install
       working-directory: binutils-gdb
