@@ -1,9 +1,7 @@
-[![Build Status](https://travis-ci.org/pavelkryukov/gnu-binutils-clang.svg?branch=master)](https://travis-ci.org/pavelkryukov/gnu-binutils-clang)
-
 # GNU Binutils + Clang
 Automated build of GNU Binutils and GDB with Clang Static Analyzer.
 
-The methodology originates from [MIPT-MIPS](http://mipt-ilab.github.io/mipt-mips/) project which builds GNU Binutils for MIPS as a part of CI. 
+The methodology originates from [MIPT-MIPS](http://mipt-ilab.github.io/mipt-mips/) project which built GNU Binutils for MIPS as a part of CI. 
 
 ## Vulnerabilities found:
  * ~~**[PR22245](https://sourceware.org/bugzilla/show_bug.cgi?id=22245)**~~ — potential UB in calling variadic argument function. Reported by [Kirill Nedostoev](https://github.com/inedostoev) while resolving ~~[MIPT-MIPS/#147](https://github.com/MIPT-ILab/mipt-mips/issues/147)~~.
@@ -16,4 +14,3 @@ The methodology originates from [MIPT-MIPS](http://mipt-ilab.github.io/mipt-mips
 
 ## Clang bugs:
   * **[PR36505](https://bugs.llvm.org/show_bug.cgi?id=36505)** — Clang-tidy: expression with calls to a non-pure function is considered as always-true
-  
