@@ -27,6 +27,10 @@ jobs:
         sudo apt-get install clang++-10 clang-tidy-10 bear
         echo "CC=clang-10" >> $GITHUB_ENV
         echo "CXX=clang++-10" >> $GITHUB_ENV
+    
+    - name: Install MacOS
+      if: matrix.os == 'macos-latest'
+      run: brew install bear
 
     - name: Configure
       working-directory: binutils-gdb
