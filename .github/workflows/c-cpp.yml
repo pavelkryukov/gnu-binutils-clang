@@ -38,7 +38,7 @@ jobs:
   
     - name: Build
       working-directory: binutils-gdb
-      run: bear make MAKEINFO=true > /dev/null
+      run: bear -- make MAKEINFO=true > /dev/null
     
     - name: Clang-Tidy
       if: matrix.os == 'ubuntu-latest'
