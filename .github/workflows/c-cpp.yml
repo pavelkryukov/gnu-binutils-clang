@@ -38,10 +38,10 @@ jobs:
   
     - name: Build
       working-directory: binutils-gdb
-      run: bear -- make MAKEINFO=true > /dev/null
+      run: make MAKEINFO=true > /dev/null
     
     - name: Clang-Tidy
-      if: matrix.os == 'ubuntu-latest'
+      if: matrix.os == 'no-ubuntu-latest'
       working-directory: binutils-gdb
       run: run-clang-tidy-10.py -clang-tidy-binary clang-tidy-10 -header-filter='.*' '^((?!conftest).)*$' | grep -v "header-filter" --color=never
     
