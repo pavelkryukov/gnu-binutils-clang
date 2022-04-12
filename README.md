@@ -15,4 +15,4 @@ The methodology originates from [MIPT-MIPS](http://mipt-ilab.github.io/mipt-mips
  * [`382bc56`](https://sourceware.org/git?p=binutils-gdb.git;a=commit;h=382bc56bc702608c2f493f743c2e990435a7a74c)
 
 ## Clang bugs:
-  * **[PR36505](https://bugs.llvm.org/show_bug.cgi?id=36505)** — Clang-tidy: expression with calls to a non-pure function is considered as always-true
+  * ~~**[llvm/llvm-project#35853](https://github.com/llvm/llvm-project/issues/35853)**~~ — Clang-tidy: expression with calls to a non-pure function is considered as always-true
